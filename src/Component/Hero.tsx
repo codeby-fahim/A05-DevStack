@@ -5,7 +5,7 @@ const Hero = () => {
       <div className="flex flex-col justify-around">
         <div>
           <h2 className="text-6xl font-bold">
-          Build Your Ideal <br /> <span className="bg-linear-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent">Development Stack</span>
+          Build Your Ideal <br/> <span className="bg-linear-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent">Development Stack</span>
         </h2>
         <p className="text-xl mt-3">
           Explore frontend, backend, database, and tooling options,<br/> compare them
