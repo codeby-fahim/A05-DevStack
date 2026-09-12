@@ -1,5 +1,6 @@
 import { use } from "react";
 import type { ITechnologyType } from "../../Type/TechnologyType";
+import TechnologyCard from "./TechnologyCard";
 
 interface TechnologyFetchProps{
   technologyPromise: Promise<ITechnologyType[]>;
@@ -12,17 +13,17 @@ const Technology = ({technologyPromise}:TechnologyFetchProps) => {
         <h2 className="text-4xl font-bold mb-2">Explore the <span className="text-[#EC4899]">Technologies</span></h2>
         <p className="text-ms">Pick one technology per category to build your ideal stack.</p>
       </div>
-      <div className="flex justify-between">
-        <div>
+      <div className="grid grid-cols-4 gap-4">
+        <div className="col-span-3 grid grid-cols-3 gap-3">
           {
             technology.map((tech)=>{
               return (
-                <div>{tech.name}</div>
+                <TechnologyCard tech={tech}></TechnologyCard>
               )
             })
           }
         </div>
-        <div>
+        <div className="col-span-1">
           <h2>remove section</h2>
         </div>
       </div>
