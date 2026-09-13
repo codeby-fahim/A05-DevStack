@@ -2,14 +2,20 @@ import type { ITechnologyType } from "../../Type/TechnologyType";
 
 interface TechnologyCardProps {
   tech: ITechnologyType;
+  handleAddToStack: (tech: ITechnologyType) => void;
+  isSelected: boolean;
 }
 
-const TechnologyCard = ({ tech }: TechnologyCardProps) => {
+const TechnologyCard = ({
+  tech,
+  handleAddToStack,
+  isSelected,
+}: TechnologyCardProps) => {
   return (
     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
       <div className="flex justify-between items-start mb-4">
         <div className="w-10 h-10 flex items-center justify-center text-2xl">
-          <img src={tech.icon} alt="" />
+          <img src={tech.icon} alt={tech.name} />
         </div>
 
         {tech.badge && (
@@ -41,8 +47,16 @@ const TechnologyCard = ({ tech }: TechnologyCardProps) => {
           </div>
         </div>
 
-        <button className="w-full py-3 bg-gray-900 hover:bg-black text-white font-medium rounded-xl transition-colors text-sm cursor-pointer">
-          Add to Stack
+        <button
+          onClick={() => handleAddToStack(tech)}
+          disabled={isSelected}
+          className={`w-full py-3 font-medium rounded-xl transition-colors text-sm ${
+            isSelected
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-gray-900 hover:bg-black text-white cursor-pointer"
+          }`}
+        >
+          {isSelected ? "Added to Stack" : "Add to Stack"}
         </button>
       </div>
     </div>
