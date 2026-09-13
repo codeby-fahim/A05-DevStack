@@ -2,6 +2,7 @@ import { use, useState } from "react";
 import type { ITechnologyType } from "../../Type/TechnologyType";
 import TechnologyCard from "./TechnologyCard";
 import SelectedCard from "./SelectedCard";
+import { Bounce, toast } from "react-toastify";
 
 interface TechnologyFetchProps {
   technologyPromise: Promise<ITechnologyType[]>;
@@ -17,6 +18,17 @@ const Technology = ({ technologyPromise }: TechnologyFetchProps) => {
     if (!isExist) {
       setSelectedStack([...selectedStack, tech]);
     }
+    toast.success("Successfully Added to Stack", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
   };
 
   const handleRemoveFromStack = (id: string | number) => {
