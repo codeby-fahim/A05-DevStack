@@ -10,17 +10,26 @@ const TechnologyFetch = async (): Promise<ITechnologyType[]> => {
   const data = await res.json();
   return data;
 };
+
 function App() {
   const [technologyPromise] = useState(() => TechnologyFetch());
   return (
-    <>
-      <Nav></Nav>
-      <Hero></Hero>
-      <Suspense fallback={<h2>Loading....</h2>}>
-        <Technology technologyPromise={technologyPromise}></Technology>
-      </Suspense>
-      <Footer></Footer>
-    </>
+    <div className="flex min-h-screen flex-col">
+      <Nav />
+      <main className="flex-1">
+        <Hero />
+        <Suspense
+          fallback={
+            <div className="flex min-h-[40vh] items-center justify-center">
+              <span className="loading loading-spinner loading-lg text-pink-500" />
+            </div>
+          }
+        >
+          <Technology technologyPromise={technologyPromise} />
+        </Suspense>
+      </main>
+      <Footer />
+    </div>
   );
 }
 

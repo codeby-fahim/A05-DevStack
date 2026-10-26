@@ -12,33 +12,40 @@ const TechnologyCard = ({
   isSelected,
 }: TechnologyCardProps) => {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-      <div className="flex justify-between items-start mb-4">
-        <div className="w-10 h-10 flex items-center justify-center text-2xl">
-          <img src={tech.icon} alt={tech.name} />
+    <div className="flex h-full flex-col justify-between rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-6">
+      <div className="mb-4 flex items-start justify-between gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center text-2xl">
+          <img
+            src={tech.icon}
+            alt={tech.name}
+            className="h-full w-full object-contain"
+            loading="lazy"
+          />
         </div>
 
         {tech.badge && (
-          <span className="px-3 py-1 bg-cyan-50 text-cyan-600 text-xs font-medium rounded-full">
+          <span className="shrink-0 rounded-full bg-cyan-50 px-3 py-1 text-xs font-medium text-cyan-600">
             {tech.badge}
           </span>
         )}
       </div>
 
       <div className="mb-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{tech.name}</h3>
-        <p className="text-gray-500 text-sm leading-relaxed">
+        <h3 className="mb-2 text-lg font-bold text-gray-900 sm:text-xl">
+          {tech.name}
+        </h3>
+        <p className="text-sm leading-relaxed text-gray-500">
           {tech.description}
         </p>
       </div>
 
       <div>
-        <div className="flex items-center justify-between text-xs text-gray-500 mb-4 pt-4 border-t border-gray-50">
-          <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 bg-gray-100 rounded-md font-medium text-gray-700">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-t border-gray-50 pt-4 text-xs text-gray-500">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-md bg-gray-100 px-2.5 py-1 font-medium text-gray-700">
               {tech.category}
             </span>
-            <span className="px-2.5 py-1 bg-gray-100 rounded-md font-medium text-gray-700">
+            <span className="rounded-md bg-gray-100 px-2.5 py-1 font-medium text-gray-700">
               {tech.difficulty}
             </span>
           </div>
@@ -50,10 +57,10 @@ const TechnologyCard = ({
         <button
           onClick={() => handleAddToStack(tech)}
           disabled={isSelected}
-          className={`w-full py-3 font-medium rounded-xl transition-colors text-sm ${
+          className={`w-full cursor-pointer rounded-xl py-3 text-sm font-medium transition-colors ${
             isSelected
-              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-              : "bg-gray-900 hover:bg-black text-white cursor-pointer"
+              ? "cursor-not-allowed bg-gray-200 text-gray-400"
+              : "bg-gray-900 text-white hover:bg-black"
           }`}
         >
           {isSelected ? "Added to Stack" : "Add to Stack"}
